@@ -24,7 +24,7 @@ for((;;)); do
 		done
 		height=$(haqqd status |& jq -r ."SyncInfo"."latest_block_height")
 		if ((height>$BLOCK)); then
-			echo -e "$GREEN_COLOR Ваша нода полностью обновлена (YOUR NODE WAS SUCCESFULLY UPDATED TO VERSION:): $VERSION $NO_COLOR\n"
+			echo -e "$GREEN_COLOR ВАША НОДА ПОЛНОСТЬЮ ОБНОВЛЕНА ДО ВЕРСИИ (YOUR NODE WAS SUCCESFULLY UPDATED TO VERSION:): $VERSION $NO_COLOR\n"
 		fi
 		haqqd version --long | head
 		break
