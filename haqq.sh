@@ -4,7 +4,7 @@ RED_COLOR='\033[0;31m'
 NO_COLOR='\033[0m'
 BLOCK=1412300
 VERSION=v1.3.0
-echo -e "$GREEN_COLOR ВАША НОДА БУДЕТ ОБНОВЛЕНА ДО: $VERSION НА БЛОКЕ №: $BLOCK $NO_COLOR\n"
+echo -e "$GREEN_COLOR ВАША НОДА БУДЕТ ОБНОВЛЕНА ДО (YOUR NODE WILL BE UPDATED TO VERSION): $VERSION НА БЛОКЕ (ON BLOCK) №: $BLOCK $NO_COLOR\n"
 for((;;)); do
 	height=$(haqqd status |& jq -r ."SyncInfo"."latest_block_height")
 	if ((height>=$BLOCK)); then
@@ -24,12 +24,12 @@ for((;;)); do
 		done
 		height=$(haqqd status |& jq -r ."SyncInfo"."latest_block_height")
 		if ((height>$BLOCK)); then
-			echo -e "$GREEN_COLOR Ваша нода обновлена: $VERSION $NO_COLOR\n"
+			echo -e "$GREEN_COLOR Ваша нода полностью обновлена (YOUR NODE WAS SUCCESFULLY UPDATED TO VERSION:): $VERSION $NO_COLOR\n"
 		fi
 		haqqd version --long | head
 		break
 	else
-		echo -e "${GREEN_COLOR}$height${NO_COLOR} ($(( BLOCK - height  )) блоков осталось)"
+		echo -e "${GREEN_COLOR}$height${NO_COLOR} ($(( BLOCK - height  )) блоков осталось(blocks left) )"
 	fi
 	sleep 5
 done
