@@ -4,7 +4,7 @@ RED_COLOR='\033[0;31m'
 NO_COLOR='\033[0m'
 BLOCK=1412300
 VERSION=v1.3.0
-echo -e "$GREEN_COLOR Ваша нода будети обновлена до: $VERSION на блоке №: $BLOCK $NO_COLOR\n"
+echo -e "$GREEN_COLOR ВАША НОДА БУДЕТ ОБНОВЛЕНА ДО: $VERSION НА БЛОКЕ №: $BLOCK $NO_COLOR\n"
 for((;;)); do
 	height=$(haqqd status |& jq -r ."SyncInfo"."latest_block_height")
 	if ((height>=$BLOCK)); then
