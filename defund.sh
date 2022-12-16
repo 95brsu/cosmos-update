@@ -6,7 +6,7 @@ BLOCK=5554316
 VERSION=v0.2.0
 echo -e "$GREEN_COLOR ВАША НОДА БУДЕТ ОБНОВЛЕНА ДО (YOUR NODE WILL BE UPDATED TO VERSION): $VERSION НА БЛОКЕ (ON BLOCK) №: $BLOCK $NO_COLOR\n"
 for((;;)); do
-	height=$(haqqd status |& jq -r ."SyncInfo"."latest_block_height")
+	height=$(defundd status |& jq -r ."SyncInfo"."latest_block_height")
 	if ((height>=$BLOCK)); then
 
 		systemctl stop defundd
