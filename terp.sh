@@ -12,11 +12,10 @@ for((;;)); do
 		sudo systemctl stop terpd
 		cd $HOME && rm -rf terp-core
 		git clone https://github.com/terpnetwork/terp-core.git
-    cd terp-core
-    git fetch --tags
-		git checkout $VERSION
-		make build && make install
-    sudo mv ./build/terpd $(which terpd)
+		cd terp-core
+		git checkout v0.2.0
+		make install
+		curl -s  https://raw.githubusercontent.com/terpnetwork/test-net/master/athena-2/0.2.0/genesis.json > ~/.terp/config/genesis.json
 		sudo systemctl restart terpd && journalctl -fu terpd -o cat
 
 		for (( timer=60; timer>0; timer-- )); do
@@ -30,7 +29,7 @@ for((;;)); do
 		terpd version --long | head
 		break
 	else
-		echo -e "${GREEN_COLOR}$height${NO_COLOR} ($(( BLOCK - height  )) блоков осталось(blocks left) )"
+		echo -e "${GREEN_COLOR}$height${NO_COLOR} ($(( BLOCK - height  )) Блоков осталось(blocks left) )"
 	fi
 	sleep 5
 done
